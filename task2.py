@@ -11,11 +11,11 @@ def isFloat(case):
 
 userData=[]
 # Name varification
-allowed_chars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+allowedChars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 while True:
     case=input('First Name: ') 
     verifyCase = set(case)
-    if verifyCase.issubset(allowed_chars):
+    if verifyCase.issubset(allowedChars):
         userData.append(case)
         break
     else:
@@ -23,7 +23,7 @@ while True:
 while True:
     case=input('Last Name: ') 
     verifyCase = set(case)
-    if verifyCase.issubset(allowed_chars):
+    if verifyCase.issubset(allowedChars):
         userData.append(case)
         break
     else:
@@ -51,13 +51,18 @@ while True:
     case=input('Height (m): ')
     case=case.replace(',','.')
     if isFloat(case):
-        userData.append(float(case))
-        break
+        if '.' in case:
+            userData.append(float(case))
+            break
+        else:
+            userData.append(float(case)/100) 
+            break
     else:
         print('\nPlease enter with a valible height!')
 
 # calculate de BMI
 bmi=(userData[3])/(userData[4]**2)
+
 # categorzie the user BMI 
 if bmi<18.5:
     categorie='Underweight'
