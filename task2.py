@@ -1,4 +1,3 @@
-
 print('This Software calculates your BMI (Body mass index) based on your height and weight. \nPlease enter with the following informations.')
 
 # Verify if the user input is a float number
@@ -32,7 +31,6 @@ while True:
         break
     else:
         print('\nPlease enter with male or female!')
-
 # Age verification
 while True:
     case=input('Age: ')
