@@ -1,4 +1,5 @@
-print('This Software calculates your BMI (Body mass index) based on your height and weight. \n Please enter with the following informations.')
+
+print('This Software calculates your BMI (Body mass index) based on your height and weight. \nPlease enter with the following informations.')
 
 # Verify if the user input is a float number
 def isFloat(case):
@@ -10,25 +11,28 @@ def isFloat(case):
 
 userData=[]
 # Name varification
+allowed_chars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 while True:
-    case=input('First Name: ')
-    if case.isnumeric():
-        print('\nPlease enter with a string!')
-    else:
+    case=input('First Name: ') 
+    verifyCase = set(case)
+    if verifyCase.issubset(allowed_chars):
         userData.append(case)
         break
-while True:
-    case=input('Last Name: ')
-    if case.isnumeric():
-        print('\nPlease enter with a string!')
     else:
+        print('\nPlease enter with a string!')
+while True:
+    case=input('Last Name: ') 
+    verifyCase = set(case)
+    if verifyCase.issubset(allowed_chars):
         userData.append(case)
         break
-
+    else:
+        print('\nPlease enter with a string!')
+    
 # Age verification
 while True:
     case=input('Age: ')
-    if case.isnumeric():
+    if case.isdigit():
         userData.append(int(case))
         break
     else:
