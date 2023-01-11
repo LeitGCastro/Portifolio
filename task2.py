@@ -11,17 +11,9 @@ def isFloat(case):
 
 userData=[]
 # Name varification
-allowedChars = set('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 while True:
-    case=input('First Name: ') 
-    verifyCase = set(case)
-    if verifyCase.issubset(allowedChars):
-        userData.append(case)
-        break
-    else:
-        print('\nPlease enter with a string!')
-while True:
-    case=input('Last Name: ') 
+    allowedChars = set('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')
+    case=input('Full Name: ') 
     verifyCase = set(case)
     if verifyCase.issubset(allowedChars):
         userData.append(case)
@@ -73,7 +65,7 @@ while True:
         print('\nPlease enter with a valible height!')
 
 # calculate de BMI
-bmi=(userData[4])/(userData[5]**2)
+bmi=(userData[3])/(userData[4]**2)
 
 if userData[3]>=20:
     # categorzie the user BMI 
@@ -87,7 +79,7 @@ if userData[3]>=20:
         categorie='Obesity'
 
 # Women younger than 20
-elif userData[3]<20 and userData[2]=='Mrs':
+elif userData[3]<20 and userData[3]=='Mrs':
     if userData[3]>=10 and userData[3]<13:
         if bmi<15: categorie="Underweight"
         elif bmi>=15 and bmi<20 : categorie='Appropriate weight'
@@ -104,7 +96,7 @@ elif userData[3]<20 and userData[2]=='Mrs':
         print('Sorry but your age is out of range')
 
 # Men younger than 20
-elif userData[3]<20 and userData[2]=='Mr':
+elif userData[3]<20 and userData[3]=='Mr':
     if userData[3]>=10 and userData[3]<13:
         if bmi<15.20: categorie="Underweight"
         elif bmi>=15.20 and bmi<19.50 : categorie='Appropriate weight'
@@ -120,4 +112,4 @@ elif userData[3]<20 and userData[2]=='Mr':
     else:
         print('Sorry but your age is out of range')
 
-print('{gender} {fName} {lName}, your BMI is {bmi:.2f}, you are categorized as {cate}!'.format(gender=userData[2],fName=userData[0].capitalize(), lName=userData[1].capitalize(), bmi=bmi, cate=categorie))
+print('{fName}, your BMI is {bmi:.2f}, you are categorized as {cate}!'.format(fName=userData[0].upper(), bmi=bmi, cate=categorie))
