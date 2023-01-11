@@ -36,6 +36,7 @@ while True:
 # Weight verification
 while True:
     case=input('Weight (kg): ')
+    case=case.replace(',','.')
     if isFloat(case):
         userData.append(float(case))
         break
@@ -44,6 +45,7 @@ while True:
 # Height verification
 while True:
     case=input('Height (m): ')
+    case=case.replace(',','.')
     if isFloat(case):
         userData.append(float(case))
         break
@@ -52,7 +54,6 @@ while True:
 
 # calculate de BMI
 bmi=(userData[3])/(userData[4]**2)
-
 # categorzie the user BMI 
 if bmi<18.5:
     categorie='Underweight'
