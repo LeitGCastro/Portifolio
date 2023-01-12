@@ -12,16 +12,16 @@ userData=[]
 # Name varification
 while True:
     allowedChars = set('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')
-    case=input('Full Name: ') 
+    case=input(' - Full Name: ') 
     verifyCase = set(case)
     if verifyCase.issubset(allowedChars):
         userData.append(case)
         break
     else:
-        print('\nPlease enter with a string!')
+        print('Please enter with a string!')
 # Gender verification
 while True:
-    case=input('Gender: ') 
+    case=input(' - Gender: ') 
     if case=='male' or case=='female' or case=='Male' or case=='Female':
         if(case=='male' or case=='Male'):
             case='Mr'
@@ -30,37 +30,46 @@ while True:
         userData.append(case)
         break
     else:
-        print('\nPlease enter with male or female!')
+        print('Please enter with male or female!')
 # Age verification
 while True:
-    case=input('Age: ')
-    if case.isdigit():
+    case=input(' - Age: ')
+    if case.isdigit() and int(case)<120:
         userData.append(int(case))
         break
     else:
-        print('\nPlease enter with a valible age!')
+        print('Please enter with a valible age!')
 # Weight verification
 while True:
-    case=input('Weight (kg): ')
+    case=input(' - Weight (kg): ')
     case=case.replace(',','.')
     if isFloat(case):
-        userData.append(float(case))
-        break
-    else:
-        print('\nPlease enter with a valible weight!')
-# Height verification
-while True:
-    case=input('Height (m): ')
-    case=case.replace(',','.')
-    if isFloat(case):
-        if '.' in case:
+        if len(case)>4:
+            print("Your weight input is too large! It must have less than 3 numbers.")
+        else:
             userData.append(float(case))
             break
-        else:
-            userData.append(float(case)/100) 
-            break
     else:
-        print('\nPlease enter with a valible height!')
+        print('Please enter with a valible weight!')
+# Height verification
+while True:
+    case=input(' - Height (m): ')
+    case=case.replace(',','.')
+    if isFloat(case):
+        if '.' in case:    
+            if len(case)<=4:
+                userData.append(float(case))
+                break
+            else:
+                print("Your height input is too large! It must have less than 3 numbers.")
+        else:
+            if len(case)<=3:
+                userData.append(float(case)/100) 
+                break
+            else:
+                print("Your height input is too large! It must have less than 3 numbers.")
+    else:
+        print('Please enter with a valible height!')
 
 # calculate de BMI
 bmi=(userData[3])/(userData[4]**2)
