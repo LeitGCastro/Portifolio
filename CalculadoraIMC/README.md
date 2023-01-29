@@ -6,4 +6,4 @@ Foi utilizado Python para o desenvolvimento, e apesar de ser uma lógica bem sim
 
 O Usuário entra com 5 inputs: Nome, Gênero, Idade, Peso e Altura.
 
-Dependendo da idade inserida a lógida da aplicação de altera, uma vez que para pessoal com menos de 20 anos de idade o cálculo padrão de IMC não se aplica.
+Dependendo da idade inserida a lógida da aplicação de altera, uma vez que para pessoas com menos de 20 anos de idade o cálculo padrão de IMC não se aplica.
