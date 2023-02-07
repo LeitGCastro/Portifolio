@@ -6,3 +6,4 @@ O projeto se resume a um Jovo da velha desenvolvido em Java utilizando socket pa
  
 Basicamente cada lado da conexão é um jogador e toda a lógica por trás da aplicação é baseada em uma string qual tem seu valor alterado dependendo do lado (cliente ou servidor) e posição que o usuário digitou
  
+Obs.: Recomendo que a utilize o netbeans para rodar o projeto.
