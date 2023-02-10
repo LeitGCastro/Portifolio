@@ -21,9 +21,9 @@ while True:
         print('Please enter with a string!')
 # Gender verification
 while True:
-    case=input(' - Gender: ') 
-    if case=='male' or case=='female' or case=='Male' or case=='Female':
-        if(case=='male' or case=='Male'):
+    case=input(' - Gender: ').lower()
+    if case=='male' or case=='female':
+        if(case=='male'):
             case='Mr'
         else:
             case='Mrs'
