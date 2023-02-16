@@ -8,14 +8,66 @@ def isFloat(case):
     except:
         return False
 
-userData=[]
+def calculate_bmi(weight, height):
+    return (weight)/(height**2)
+
+def verify_adult_bmi(bmi):
+    if bmi<18.5:
+        categorie='Underweight'
+    elif bmi>=18.5 and bmi<=24.9:
+        categorie='Appropriate weight'
+    elif bmi>=25 and bmi<=29.9:
+        categorie='Overweight'
+    elif bmi>=30:
+        categorie='Obesity'
+
+    return categorie
+
+def verify_teens_bmi(age, gender, bmi):
+
+    # Women younger than 20
+    if age<20 and gender=='Mrs':
+        if age>=10 and age<13:
+            if bmi<15: categorie="Underweight"
+            elif bmi>=15 and bmi<20 : categorie='Appropriate weight'
+            elif bmi>=20: categorie='Overweight'
+        if age>=13 and age<16:
+            if bmi<16.40: categorie="Underweight"
+            elif bmi>=16.4 and bmi<23 : categorie='Appropriate weight'
+            elif bmi>=23: categorie='Overweight'
+        if age>=16:
+            if bmi<17: categorie="Underweight"
+            elif bmi>=17 and bmi<24.5 : categorie='Appropriate weight'
+            elif bmi>=24.5: categorie='Overweight'
+        else:
+            print('Sorry but your age is out of range')
+    # Men younger than 20
+    elif age<20 and gender=='Mr':
+        if age>=10 and age<13:
+            if bmi<15.20: categorie="Underweight"
+            elif bmi>=15.20 and bmi<19.50 : categorie='Appropriate weight'
+            elif bmi>=19.50: categorie='Overweight'
+        if age>=13 and age<16:
+            if bmi<16.6: categorie="Underweight"
+            elif bmi>=16.6 and bmi<20.5 : categorie='Appropriate weight'
+            elif bmi>=20.5: categorie='Overweight'
+        if age>=16:
+            if bmi<18: categorie="Underweight"
+            elif bmi>=18 and bmi<23 : categorie='Appropriate weight'
+            elif bmi>=23: categorie='Overweight'
+        else:
+            print('Sorry but your age is out of range')
+
+    return categorie
+
+userData={}
 # Name varification
 while True:
     allowedChars = set('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')
     case=input(' - Full Name: ') 
     verifyCase = set(case)
     if verifyCase.issubset(allowedChars):
-        userData.append(case)
+        userData['name'] =  case
         break
     else:
         print('Please enter with a string!')
@@ -23,11 +75,11 @@ while True:
 while True:
     case=input(' - Gender: ').lower()
     if case=='male' or case=='female':
-        if(case=='male'):
+        if(case=='male'): 
             case='Mr'
         else:
             case='Mrs'
-        userData.append(case)
+        userData['gender'] =  case
         break
     else:
         print('Please enter with male or female!')
@@ -35,7 +87,7 @@ while True:
 while True:
     case=input(' - Age: ')
     if case.isdigit() and int(case)<120:
-        userData.append(int(case))
+        userData['age'] = int(case)
         break
     else:
         print('Please enter with a valible age!')
@@ -47,7 +99,7 @@ while True:
         if len(case)>4:
             print("Your weight input is too large! It must have less than 3 numbers.")
         else:
-            userData.append(float(case))
+            userData['weight'] = float(case)
             break
     else:
         print('Please enter with a valible weight!')
@@ -58,65 +110,24 @@ while True:
     if isFloat(case):
         if '.' in case:    
             if len(case)<=4:
-                userData.append(float(case))
+                userData['height'] = float(case)
                 break
             else:
                 print("Your height input is too large! It must have less than 3 numbers.")
         else:
             if len(case)<=3:
-                userData.append(float(case)/100) 
+                userData['height'] = float(case)/100
                 break
             else:
                 print("Your height input is too large! It must have less than 3 numbers.")
     else:
         print('Please enter with a valible height!')
 
-# calculate de BMI
-bmi=(userData[3])/(userData[4]**2)
+bmi = calculate_bmi(userData['weight'], userData['height'])
 
-if userData[3]>=20:
-    # categorzie the user BMI 
-    if bmi<18.5:
-        categorie='Underweight'
-    elif bmi>=18.5 and bmi<=24.9:
-        categorie='Appropriate weight'
-    elif bmi>=25 and bmi<=29.9:
-        categorie='Overweight'
-    elif bmi>=30:
-        categorie='Obesity'
+if userData['age']>=20:
+    categorie = verify_adult_bmi(bmi)
+else:
+    categorie = verify_teens_bmi(userData['age'], userData['gender'], bmi)
 
-# Women younger than 20
-elif userData[3]<20 and userData[3]=='Mrs':
-    if userData[3]>=10 and userData[3]<13:
-        if bmi<15: categorie="Underweight"
-        elif bmi>=15 and bmi<20 : categorie='Appropriate weight'
-        elif bmi>=20: categorie='Overweight'
-    if userData[3]>=13 and userData[3]<16:
-        if bmi<16.40: categorie="Underweight"
-        elif bmi>=16.4 and bmi<23 : categorie='Appropriate weight'
-        elif bmi>=23: categorie='Overweight'
-    if userData[3]>=16:
-        if bmi<17: categorie="Underweight"
-        elif bmi>=17 and bmi<24.5 : categorie='Appropriate weight'
-        elif bmi>=24.5: categorie='Overweight'
-    else:
-        print('Sorry but your age is out of range')
-
-# Men younger than 20
-elif userData[3]<20 and userData[3]=='Mr':
-    if userData[3]>=10 and userData[3]<13:
-        if bmi<15.20: categorie="Underweight"
-        elif bmi>=15.20 and bmi<19.50 : categorie='Appropriate weight'
-        elif bmi>=19.50: categorie='Overweight'
-    if userData[3]>=13 and userData[3]<16:
-        if bmi<16.6: categorie="Underweight"
-        elif bmi>=16.6 and bmi<20.5 : categorie='Appropriate weight'
-        elif bmi>=20.5: categorie='Overweight'
-    if userData[3]>=16:
-        if bmi<18: categorie="Underweight"
-        elif bmi>=18 and bmi<23 : categorie='Appropriate weight'
-        elif bmi>=23: categorie='Overweight'
-    else:
-        print('Sorry but your age is out of range')
-
-print('{fName}, your BMI is {bmi:.2f}, you are categorized as {cate}!'.format(fName=userData[0].upper(), bmi=bmi, cate=categorie))
+print(f'{userData["gender"]} {userData["name"].capitalize()}, your BMI is {bmi:.2f}, you are categorized as {categorie}!')
