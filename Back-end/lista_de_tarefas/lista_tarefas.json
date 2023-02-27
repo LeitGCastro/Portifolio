@@ -1,0 +1,14 @@
+[
+    {
+        "Cozinhar": {
+            "description": "Macarrão",
+            "requirements": "Comprar o macarrão"
+        }
+    },
+    {
+        "Banho": {
+            "description": "tomar banho",
+            "requirements": "sabão"
+        }
+    }
+]
