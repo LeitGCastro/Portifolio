@@ -1,4 +1,4 @@
-# 'Banco de dados de biblioteca' 
+# API CRUD de livros 
 
 Essa é uma API de gerenciamento de livros baseada em Json. Um simples CRUD de livros desenvolvida em Flask rodando no localhost na porta 5000.
 
