@@ -38,7 +38,7 @@ def get_livros():
 
 #consultar (id)
 @app.route('/livros/<int:id>', methods = ['GET'])
-def get__livro_by_id(id):
+def get_livro_by_id(id):
     for livro in livros:
         if livro.get('id') == id:
             return jsonify(livro)
